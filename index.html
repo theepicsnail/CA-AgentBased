@@ -1,7 +1,18 @@
 <html>
+<head>
+<script type="text/javascript" src="common.js"></script>
+</head>
 <body style="margin:0">
 <canvas id="world" style="image-rendering:pixelated;"></canvas>
-<script src="common.js"></script>
-<script src="coral.js"></script>
+
+<script>
+// Load simulation based on url.com/?<simulation>
+var simulation = location.search.substr(1) || "coral";
+var head = document.getElementsByTagName('head')[0];
+var script = document.createElement('script');
+script.type ='text/javascript';
+script.src = simulation + ".js";
+head.appendChild(script);
+</script>
 </body>
 </html>
