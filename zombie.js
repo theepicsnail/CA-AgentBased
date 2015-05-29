@@ -96,6 +96,7 @@ zombie = {
   }
 }
 
+p = new Plot([zombie.color, human.color]);
 simulate({
   world: world,
   setup: function(world) {
@@ -120,5 +121,24 @@ simulate({
       c = rint(world.WIDTH);
     }
     world.set(r,c, zombie);
+  },
+  step: function() {
+    data = {
+      'zombie':0,
+      'human':0,
+    }
+    for(var r = world.HEIGHT; r-->0 ;)
+    for(var c = world.WIDTH; c-->0 ;)
+    {
+      switch(world.world[r][c]) {
+        case zombie: data.zombie ++; break;
+        case human: data.human ++; break;
+      }
+    }
+    var sum = data.zombie + data.human
+    p.addData([data.zombie / sum, data.human / sum])
+
+    if(data.human == 0)
+      return true;
   }
 });

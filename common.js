@@ -120,6 +120,10 @@ function simulate(config) {
 
   mainLoop = function() {
     world.step();
+    if(config.step)
+      if(config.step()==true)
+        return;
+
     frames ++;
     requestAnimationFrame(mainLoop);
   };
