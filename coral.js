@@ -1,4 +1,4 @@
-args = getArgs({width:100, height:100, scale:3});
+args = getArgs({width:100, height:100, scale:3, corals:1});
 world = new World(args);
 
 water = {
@@ -50,7 +50,9 @@ simulate({
     for(var count = world.CELLS * .1 ; count-->0 ;)
       world.set(rint(world.HEIGHT), rint(world.WIDTH), particle);
 
-    // seed the coral
-    world.set(world.HEIGHT-5, world.WIDTH/2|0, coral);
+    // seed the corals
+    var gap = world.WIDTH / args.corals;
+    for(var col = gap/2; col < world.WIDTH ; col += gap)
+      world.set(world.HEIGHT-5, col|0, coral);
   }
 });
