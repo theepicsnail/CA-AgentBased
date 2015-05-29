@@ -59,7 +59,7 @@ World.prototype.getNeighborhood = function(row, col, radius) {
 // but it all averages out.
 World.prototype.step = function() {
   for(var count = this.CELLS; count-->0 ;) {
-    this.updateCell(rint(this.WIDTH), rint(this.HEIGHT));
+    this.updateCell(rint(this.HEIGHT), rint(this.WIDTH));
   }
 }
 
