@@ -155,5 +155,12 @@ function getArgs(baseConfig) {
     }
     baseConfig[parts[0]]=val;
   }
+
+
+  var args = [];
+  for(var key in baseConfig) {
+    args.push(key + "=" + baseConfig[key])
+  }
+  location.hash = args.join(",");
   return baseConfig;
 }
