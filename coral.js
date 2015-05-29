@@ -3,16 +3,10 @@ world = new World(args);
 
 water = {
   color: world.createColor(0,0,200),
-  step: function(sense) {
-    return dir.none;
-  }
 };
 
 coral = {
   color: world.createColor(127, 64, 0),
-  step: function(sense) {
-    return dir.none;
-  }
 };
 
 particle = {

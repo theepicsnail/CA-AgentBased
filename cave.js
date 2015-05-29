@@ -21,9 +21,6 @@ wall = {
 
 space = {
   color: world.createColor(64, 32, 0),
-  step: function(sense) {
-    return dir.none;
-  }
 };
 
 simulate({

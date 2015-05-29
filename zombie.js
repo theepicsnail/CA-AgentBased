@@ -53,15 +53,9 @@ world = new World(args);
 
 ground = {
   color: world.createColor(80,80,80),
-  step: function(sense) {
-    return dir.none;
-  }
 };
 wall = {
   color: world.createColor(0,0,0),
-  step: function(sense) {
-    return dir.none;
-  }
 }
 human = {
   color: world.createColor(0, 255, 0),

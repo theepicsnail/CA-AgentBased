@@ -71,6 +71,9 @@ World.prototype.updateCell = function(r,c) {
   if(cell == undefined)
     return console.warn("Undefined cell at ", r, c);
 
+  if(cell.step == undefined) // no step function? no problem.
+    return
+
   var world = this;
   var action = cell.step(function(radius){
     return world.getNeighborhood(r,c,radius);
