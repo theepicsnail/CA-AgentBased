@@ -1,6 +1,5 @@
 args = getArgs({width:100, height:100, scale:3, percent:40, minWalls:4, maxWalls:9});
 world = new World(args);
-dirs = [dir.north, dir.south, dir.west, dir.east]
 
 wall = {
   color: world.createColor(128, 64, 0),
@@ -12,7 +11,7 @@ wall = {
         walls += 1;
     if(walls > args.minWalls && walls <= args.maxWalls)
      return dir.none;
-    return choice(dirs)
+    return choice(directions)
   },
   interact: function(other) {
     return [other, this];

@@ -43,7 +43,6 @@ function addHouse(world, row, col) {
     case 3: world.set(row, col+7, ground); break;
   }
 }
-directions = [dir.north, dir.west, dir.south, dir.east]
 
 
 

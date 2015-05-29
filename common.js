@@ -108,6 +108,7 @@ dir = {
   west: [0,-1],
   east: [0,1],
 }
+directions = [dir.north, dir.west, dir.south, dir.east]
 
 function rint(max) {
   return (Math.random()*max)|0;
