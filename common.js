@@ -1,11 +1,13 @@
-function World(width, height, scale) {
+
+function World(config) {
   // rows/cols
-  this.WIDTH = width | 100;
-  this.HEIGHT = height | 100;
+  console.log(config)
+  this.WIDTH = config.width || 100;
+  this.HEIGHT = config.height || 100;
   this.CELLS = this.WIDTH * this.HEIGHT;
 
   // size of each cell in pixels.
-  this.SCALE = scale | 1;
+  this.SCALE = config.scale || 1;
 
   this.canvas = document.getElementById("world");
   this.canvas.style.imageRendering = "pixelated";
@@ -128,4 +130,30 @@ function simulate(config) {
   },1000);
 
   mainLoop();
+}
+
+/* 'parse' the args passed in as the hash from the location.
+ * url.com/#foo=bar,baz=3
+ * returns { 'foo':'bar', 'baz':3 }
+ *
+ * Hacky and breaks on anything kind of tricky.
+ */
+function getArgs(baseConfig) {
+  baseConfig = baseConfig || {};
+  var arglist = location.hash.substr(1).split(",");
+  for(var id in arglist) {
+    var parts = arglist[id].split("=")
+    if(parts.length != 2)
+    {
+      console.log("Skipping arg", id, arglist[id], "Expected 'key=value' format.");
+      continue
+    }
+
+    var val = parseInt(parts[1]);
+    if (val == NaN) {
+      val = parts[1];
+    }
+    baseConfig[parts[0]]=val;
+  }
+  return baseConfig;
 }

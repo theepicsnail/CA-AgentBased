@@ -1,4 +1,5 @@
-world = new World(100, 100, 3);
+args = getArgs({width:100, height:100, scale:3});
+world = new World(args);
 
 water = {
   color: world.createColor(0,0,200),
@@ -41,15 +42,15 @@ simulate({
   world: world,
   setup: function(world) {
     // fill the world with water
-    for(var r = 100; r-->0 ;)
-    for(var c = 100; c-->0 ;)
+    for(var r = world.HEIGHT; r-->0 ;)
+    for(var c = world.WIDTH; c-->0 ;)
       world.set(r,c, water);
 
     // add some particles
-    for(var count = 1000; count-->0 ;)
-      world.set(rint(100), rint(100), particle);
+    for(var count = world.CELLS * .1 ; count-->0 ;)
+      world.set(rint(world.HEIGHT), rint(world.WIDTH), particle);
 
     // seed the coral
-    world.set(99, 50, coral);
+    world.set(world.HEIGHT-5, world.WIDTH/2|0, coral);
   }
 });

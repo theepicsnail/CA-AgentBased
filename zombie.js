@@ -48,7 +48,8 @@ directions = [dir.north, dir.west, dir.south, dir.east]
 
 
 // Setup simulation!
-world = new World(100, 100, 5);
+args = getArgs({width:100, height:100, scale:5, percent:10});
+world = new World(args);
 
 ground = {
   color: world.createColor(80,80,80),
@@ -99,16 +100,16 @@ simulate({
   world: world,
   setup: function(world) {
     // fill the world
-    for(var r = 100; r-->0 ;)
-    for(var c = 100; c-->0 ;)
+    for(var r = world.HEIGHT; r-->0 ;)
+    for(var c = world.WIDTH; c-->0 ;)
       world.set(r,c, ground);
 
-    // add some people
-    for(var count = 1000; count-->0 ;)
+    // add some people (10)
+    for(var count = world.CELLS * args.percent / 100 ; count-->0 ;)
       world.set(rint(100), rint(100), human);
 
-    for(var crow = 10; crow < 100; crow += 20)
-    for(var ccol = 10; ccol < 100; ccol += 20)
+    for(var crow = 10; crow < world.HEIGHT; crow += 20)
+    for(var ccol = 10; ccol < world.WIDTH; ccol += 20)
     addHouse(world, crow, ccol)
 
     // zombie attack!
