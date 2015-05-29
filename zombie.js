@@ -106,13 +106,19 @@ simulate({
 
     // add some people (10)
     for(var count = world.CELLS * args.percent / 100 ; count-->0 ;)
-      world.set(rint(100), rint(100), human);
+      world.set(rint(world.HEIGHT), rint(world.WIDTH), human);
 
     for(var crow = 10; crow < world.HEIGHT; crow += 20)
     for(var ccol = 10; ccol < world.WIDTH; ccol += 20)
     addHouse(world, crow, ccol)
 
     // zombie attack!
-    world.set(rint(100), rint(100), zombie);
+    var r = rint(world.HEIGHT);
+    var c = rint(world.WIDTH);
+    while (world.get(r,c) == wall) {
+      r = rint(world.HEIGHT);
+      c = rint(world.WIDTH);
+    }
+    world.set(r,c, zombie);
   }
 });
