@@ -3,7 +3,8 @@ function Plot(colors) {
   body = document.getElementsByTagName("body")[0];
   this.canvas = document.createElement("canvas");
   this.canvas.height = 100;
-  container = document.createElement("div")
+  container = document.createElement("div");
+  container.style.overflow = "scroll";
   container.appendChild(this.canvas);
   body.appendChild(container);
   this.ctx = this.canvas.getContext('2d');
@@ -19,7 +20,6 @@ function Plot(colors) {
 Plot.prototype.addData = function(values) {
   var ctx = this.ctx;
   var y = 100;
-  console.log(values)
   for(var cid in this.colors) {
     ctx.strokeStyle = this.colors[cid];
     ctx.beginPath();
